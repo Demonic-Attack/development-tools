@@ -1,10 +1,10 @@
 {
-    "name": "@demonicattack/prettier",
-    "private": true,
+    "name": "@demonicattack/typegen",
     "type": "module",
     "exports": "./dist/index.js",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
+    "bin": "./dist/index.js",
     "files": [
         "dist"
     ],
@@ -13,26 +13,22 @@
         "build:clean": "rimraf dist",
         "clean": "rimraf node_modules",
         "format": "prettier -w \"**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,json,prisma,md}\"",
-        "lint": "eslint",
-        "lint:fix": "eslint --fix",
         "typecheck": "tsc --noEmit"
     },
     "prettier": "./prettier.config.js",
     "dependencies": {
-        "prettier": "^3.3.3",
-        "prettier-plugin-multiline-arrays": "^3.0.6",
-        "prettier-plugin-packagejson": "^2.5.3",
-        "prettier-plugin-prisma": "^5.0.0",
-        "prettier-plugin-sort-json": "^4.0.0",
-        "prettier-plugin-tailwindcss": "^0.6.8"
+        "tsx": "^4.19.1"
     },
     "devDependencies": {
-        "@demonicattack/eslint": "workspace:*",
+        "@demonicattack/prettier": "workspace:*",
         "@demonicattack/ts": "workspace:*",
-        "eslint": "^9.12.0",
+        "prettier": "^3.3.3",
         "rimraf": "^6.0.1",
         "tsup": "^8.3.0",
         "typescript": "^5.6.3"
+    },
+    "peerDependencies": {
+        "tsx": "^4.19.1"
     },
     "packageManager": "pnpm@9.12.1"
 }

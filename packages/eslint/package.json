@@ -65,6 +65,7 @@
     "devDependencies": {
         "@demonicattack/prettier": "workspace:*",
         "@demonicattack/ts": "workspace:*",
+        "@demonicattack/typegen": "workspace:*",
         "@types/eslint-plugin-jsx-a11y": "^6.9.0",
         "@types/eslint": "^9.6.1",
         "@types/eslint__js": "^8.42.3",
