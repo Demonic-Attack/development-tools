@@ -1,0 +1,23 @@
+{
+    "name": "@demonicattack/ts",
+    "type": "module",
+    "files": [
+        "default.json"
+    ],
+    "scripts": {
+        "clean": "rimraf node_modules",
+        "format": "prettier -w \"**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,json,prisma,md}\""
+    },
+    "dependencies": {
+        "typescript": "^5.6.3"
+    },
+    "devDependencies": {
+        "@demonicattack/prettier": "workspace:*",
+        "prettier": "^3.3.3",
+        "rimraf": "^6.0.1"
+    },
+    "peerDependencies": {
+        "typescript": "5.6.2"
+    },
+    "packageManager": "pnpm@9.12.1"
+}
