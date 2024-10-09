@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@demonicattack/prettier':
+        specifier: workspace:*
+        version: link:packages/prettier
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -144,9 +147,6 @@ importers:
         specifier: ^0.5.0
         version: 0.5.0
     devDependencies:
-      '@demonicattack/prettier':
-        specifier: workspace:*
-        version: link:../prettier
       '@demonicattack/ts':
         specifier: workspace:*
         version: link:../ts
@@ -196,9 +196,6 @@ importers:
         specifier: ^0.6.8
         version: 0.6.8(prettier-plugin-multiline-arrays@3.0.6(prettier@3.3.3))(prettier@3.3.3)
     devDependencies:
-      '@demonicattack/eslint':
-        specifier: workspace:*
-        version: link:../eslint
       '@demonicattack/ts':
         specifier: workspace:*
         version: link:../ts
@@ -221,9 +218,6 @@ importers:
         specifier: ^5.6.3
         version: 5.6.3
     devDependencies:
-      '@demonicattack/prettier':
-        specifier: workspace:*
-        version: link:../prettier
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -237,9 +231,6 @@ importers:
         specifier: ^4.19.1
         version: 4.19.1
     devDependencies:
-      '@demonicattack/prettier':
-        specifier: workspace:*
-        version: link:../prettier
       '@demonicattack/ts':
         specifier: workspace:*
         version: link:../ts

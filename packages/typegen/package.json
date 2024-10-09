@@ -13,15 +13,16 @@
         "build:clean": "rimraf dist",
         "clean": "rimraf node_modules",
         "format": "prettier -w \"**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,json,prisma,md}\"",
+        "lint": "eslint",
+        "lint:fix": "eslint --fix",
         "typecheck": "tsc --noEmit"
     },
-    "prettier": "./prettier.config.js",
     "dependencies": {
         "tsx": "^4.19.1"
     },
     "devDependencies": {
-        "@demonicattack/prettier": "workspace:*",
         "@demonicattack/ts": "workspace:*",
+        "eslint": "^9.12.0",
         "prettier": "^3.3.3",
         "rimraf": "^6.0.1",
         "tsup": "^8.3.0",

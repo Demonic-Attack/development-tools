@@ -63,11 +63,10 @@
         "local-pkg": "^0.5.0"
     },
     "devDependencies": {
-        "@demonicattack/prettier": "workspace:*",
         "@demonicattack/ts": "workspace:*",
         "@demonicattack/typegen": "workspace:*",
-        "@types/eslint-plugin-jsx-a11y": "^6.9.0",
         "@types/eslint": "^9.6.1",
+        "@types/eslint-plugin-jsx-a11y": "^6.9.0",
         "@types/eslint__js": "^8.42.3",
         "prettier": "^3.3.3",
         "rimraf": "^6.0.1",
@@ -77,5 +76,5 @@
     "peerDependencies": {
         "eslint": "^9.11.1"
     },
-      "packageManager": "pnpm@9.12.1"
+    "packageManager": "pnpm@9.12.1"
 }

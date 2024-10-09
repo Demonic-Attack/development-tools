@@ -1,6 +1,6 @@
-import { config } from '@demonicattack/prettier';
+import { config } from '../prettier/dist/index.js';
 
 /**
- * @type {import('@demonicattack/prettier').TPrettierConfig}
+ * @type {import('../prettier/dist/index.d.ts').TPrettierConfig}
  */
 export default config;
