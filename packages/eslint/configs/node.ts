@@ -10,8 +10,6 @@ const node = async (options: IOptionsOverrides = {}): Promise<TFlatConfigItem[]>
                 ['node']: eslintNodePlugin,
             },
             rules: {
-                ...eslintNodePlugin.configs['flat/recommended-module'].rules,
-                ...eslintNodePlugin.configs['flat/recommended-script'].rules,
                 'node/handle-callback-err': [
                     'error',
                     '^(err|error)$',

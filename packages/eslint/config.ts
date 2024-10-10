@@ -49,30 +49,28 @@ const flatConfigProperties = [
 
 type TResolvedOptions<T> = T extends boolean ? never : NonNullable<T>;
 type TOptionConfigKey = keyof IOptionsConfig;
+type TOverridesKey = keyof NonNullable<IOptionsConfig['overrides']>;
+type TResolvedOptionsConfig<K extends TOptionConfigKey> = TResolvedOptions<IOptionsConfig[K]>;
+type TOverridesType = Partial<Linter.RulesRecord & RuleOptions>;
 
-const isSubOptions = <K extends TOptionConfigKey>(
-    options: IOptionsConfig,
-    key: K,
-): TResolvedOptions<IOptionsConfig[K]> =>
-    isBoolean<IOptionsConfig[K]>(options[key]) ?
-        ({} as any)
-    :   ((options[key] ?? {}) as TResolvedOptions<IOptionsConfig[K]>);
-
-const getOverrides = <K extends TOptionConfigKey>(
-    options: IOptionsConfig,
-    key: K,
-): Partial<Linter.RulesRecord & RuleOptions> => {
+const isSubOptions = <K extends TOptionConfigKey>(options: IOptionsConfig, key: K): TResolvedOptionsConfig<K> => {
+    const option = options[key];
+    return isBoolean(option) ? ({} as TResolvedOptionsConfig<K>) : ((option ?? {}) as TResolvedOptionsConfig<K>);
+};
+const getOverrides = <K extends TOverridesKey>(options: IOptionsConfig, key: K): TOverridesType => {
     const sub = isSubOptions(options, key);
     return {
-        ...(options.overrides as any)?.[key],
+        ...options.overrides?.[key],
         ...('overrides' in sub ? sub.overrides : {}),
     };
 };
 
-const config = (
+const config = async (
     options: IOptionsConfig & Omit<TFlatConfigItem, 'files'> = {},
-    ...config: Awaitable<FlatConfigComposer<any, any> | Linter.Config[] | TFlatConfigItem | TFlatConfigItem[]>[]
-): FlatConfigComposer<TFlatConfigItem, TConfigNames> => {
+    ...config: Awaitable<
+        FlatConfigComposer<Linter.Config, TConfigNames> | Linter.Config[] | TFlatConfigItem | TFlatConfigItem[]
+    >[]
+): Promise<FlatConfigComposer<TFlatConfigItem, TConfigNames>> => {
     const {
         autoRenamePlugins = true,
         componentExtensions = [],
@@ -153,7 +151,6 @@ const config = (
     if (enableArca) {
         configs.push(
             arca({
-                type: options.type,
                 overrides: getOverrides(options, 'arca'),
             }),
         );
@@ -289,18 +286,22 @@ const config = (
 
     configs.push(disables());
 
-    // User can optionally pass a flat config item to the first argument
-    // We pick the known keys as ESLint would do schema validation
     const fusedConfig = flatConfigProperties.reduce((accumulator, key) => {
-        if (key in options) accumulator[key] = options[key] as any;
+        if (key in options) accumulator[key] = options[key] as never;
         return accumulator;
     }, {} as TFlatConfigItem);
 
     if (Object.keys(fusedConfig).length !== 0) configs.push([fusedConfig]);
 
     let composer = new FlatConfigComposer<TFlatConfigItem, TConfigNames>();
+    const resolvedConfig = await Promise.all(config);
 
-    composer = composer.append(...configs, ...(config as any));
+    const configArray = resolvedConfig.map(item => {
+        if (Array.isArray(item)) return item;
+        return [item];
+    });
+
+    composer = composer.append(...configs, ...configArray);
 
     if (autoRenamePlugins) composer = composer.renamePlugins(defaultPluginRenaming);
 

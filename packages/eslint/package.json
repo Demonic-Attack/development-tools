@@ -68,6 +68,7 @@
         "@types/eslint": "^9.6.1",
         "@types/eslint-plugin-jsx-a11y": "^6.9.0",
         "@types/eslint__js": "^8.42.3",
+        "@types/node": "^22.7.5",
         "prettier": "^3.3.3",
         "rimraf": "^6.0.1",
         "tsup": "^8.3.0",

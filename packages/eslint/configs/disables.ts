@@ -3,19 +3,25 @@ import type { TFlatConfigItem } from '../types';
 
 const disables = async (): Promise<TFlatConfigItem[]> => [
     {
-        name: 'disables/nextjs',
+        name: 'disables/allow-default-export',
         files: [
-            'src/app/**/{page,layout,not-found,error,loading}.tsx',
-            'src/app/{sitemap,robots}.ts',
-            'app/**/{page,layout,not-found,error,loading}.tsx',
-            'app/{sitemap,robots}.ts',
-            'middleware.ts',
+            `**/*config*.?([cm])[jt]s?(x)`,
+            `**/{views,pages,routes,middleware,plugins,api,modules}/**/*.?([cm])[jt]s?(x)`,
+            `**/{index,vite,esbuild,rollup,rolldown,webpack,rspack}.?([cm])[jt]s?(x)`,
+            '**/*.d.ts',
+            `**/*.md/**`,
+            '**/.prettierrc*',
         ],
         rules: {
-            'arca/jsx-import-react': 'off',
             'arca/no-default-export': 'off',
             'import/no-default-export': 'off',
-            'react/react-in-jsx-scope': 'off',
+        },
+    },
+    {
+        name: 'disables/js',
+        files: [...JAVASCRIPT_FILES],
+        rules: {
+            'ts/explicit-function-return-type': 'off',
         },
     },
     {
@@ -32,10 +38,19 @@ const disables = async (): Promise<TFlatConfigItem[]> => [
         },
     },
     {
-        name: 'disables/js',
-        files: [...JAVASCRIPT_FILES],
+        name: 'disables/nextjs',
+        files: [
+            'src/app/**/{page,layout,not-found,error,loading}.tsx',
+            'src/app/{sitemap,robots}.ts',
+            'app/**/{page,layout,not-found,error,loading}.tsx',
+            'app/{sitemap,robots}.ts',
+            'middleware.ts',
+        ],
         rules: {
-            'ts/explicit-function-return-type': 'off',
+            'arca/jsx-import-react': 'off',
+            'arca/no-default-export': 'off',
+            'import/no-default-export': 'off',
+            'react/react-in-jsx-scope': 'off',
         },
     },
 ];

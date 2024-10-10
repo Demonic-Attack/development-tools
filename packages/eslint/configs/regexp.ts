@@ -12,8 +12,11 @@ const regexp = async (options: IOptionsOverrides & IOptionsRegExp = {}): Promise
     };
 
     if (options.level === 'warn') {
-        for (const key in rules) {
-            if (rules[key] === 'error') rules[key] = 'warn';
+        for (const [
+            key,
+            value,
+        ] of Object.entries(rules)) {
+            rules[key] = value === 'error' ? 'warn' : value;
         }
     }
 

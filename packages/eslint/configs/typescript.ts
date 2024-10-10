@@ -105,6 +105,9 @@ const typescript = async (
         },
     });
 
+    const recommendedRules = tsPlugin.configs['eslint-recommended']?.overrides?.[0]?.rules;
+    const strictRules = tsPlugin.configs?.strict?.rules;
+
     return [
         {
             name: 'ts/setup',
@@ -117,10 +120,10 @@ const typescript = async (
             name: 'ts/rules',
             files,
             rules: {
-                ...renameRules(tsPlugin.configs['eslint-recommended']?.overrides?.[0]?.rules!, {
+                ...renameRules(recommendedRules ?? {}, {
                     '@typescript-eslint': 'ts',
                 }),
-                ...renameRules(tsPlugin.configs?.strict?.rules!, { '@typescript-eslint': 'ts' }),
+                ...renameRules(strictRules ?? {}, { '@typescript-eslint': 'ts' }),
                 'no-new-symbol': 'off',
                 'ts/ban-ts-comment': [
                     'error',

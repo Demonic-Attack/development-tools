@@ -7,6 +7,10 @@ const scopeUrl = fileURLToPath(new URL('.', import.meta.url));
 
 const isPackageInScope = (name: string): boolean => isPackageExists(name, { paths: [scopeUrl] });
 
+const toArray = <T>(value: T | T[]): T[] => (Array.isArray(value) ? value : [value]);
+
+const isBoolean = <T>(value: T): boolean => typeof value === 'boolean';
+
 const combine = async (...configs: Awaitable<TFlatConfigItem | TFlatConfigItem[]>[]): Promise<TFlatConfigItem[]> => {
     const result = await Promise.all(configs);
     return result.flat();
@@ -16,6 +20,7 @@ const interopDefault = async <T>(m: Awaitable<T>): Promise<T extends { default: 
     const resolved = await m;
     return (resolved as any).default || resolved;
 };
+
 const renameRules = (rules: Record<string, any>, map: Record<string, string>): Record<string, any> =>
     Object.fromEntries(
         Object.entries(rules).map(
@@ -41,8 +46,5 @@ const renameRules = (rules: Record<string, any>, map: Record<string, string>): R
             },
         ),
     );
-
-const toArray = <T>(value: T | T[]): T[] => (Array.isArray(value) ? value : [value]);
-const isBoolean = <T>(value: T): boolean => typeof value === 'boolean';
 
 export { combine, interopDefault, isBoolean, isPackageInScope, renameRules, toArray };

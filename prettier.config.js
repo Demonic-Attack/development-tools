@@ -1,4 +1,4 @@
-import { config } from '@demonicattack/prettier'
+import { config } from '@demonicattack/prettier';
 
 /**
  * @type {import('@demonicattack/prettier').TPrettierConfig}

@@ -51,6 +51,17 @@ const imrt = async (options: IOptionsImport & IOptionsOverrides = {}): Promise<T
                 ...(typescript && eslintImportPlugin.flatConfigs.typescript.rules),
                 ...airbnbBaseImportsResult.rules,
                 'import/consistent-type-specifier-style': 'error',
+                'import/extensions': [
+                    'error',
+                    'ignorePackages',
+                    {
+                        js: 'never',
+                        jsx: 'never',
+                        mjs: 'never',
+                        ts: 'never',
+                        tsx: 'never',
+                    },
+                ],
                 'import/imports-first': 'off',
                 'import/newline-after-import': 'error',
                 'import/no-absolute-path': 'error',
