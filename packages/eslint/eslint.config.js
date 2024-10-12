@@ -96,14 +96,16 @@ import { config } from './dist/index.js';
 
 export default config(
     {
+        // prettier: true,
         jsx: false,
+        // json: true,
         arca: true,
-        'no-commented-code': true,
         js: {
             overrides: {
                 'no-useless-computed-key': 'off',
             },
         },
+        'no-commented-code': true,
         ts: {
             tsconfigPath: 'tsconfig.json',
             overridesTypeAware: {

@@ -31,81 +31,7 @@ import { strict } from './strict';
 import { style } from './style';
 import { variables } from './variables';
 
-const deprecatedRules = async (): Promise<TFlatConfigItem['rules']> => ({
-    'array-bracket-spacing': 'off',
-    'arrow-parens': 'off',
-    'arrow-spacing': 'off',
-    'block-spacing': 'off',
-    'brace-style': 'off',
-    'comma-dangle': 'off',
-    'comma-spacing': 'off',
-    'comma-style': 'off',
-    'computed-property-spacing': 'off',
-    'dot-location': 'off',
-    'eol-last': 'off',
-    'func-call-spacing': 'off',
-    'function-call-argument-newline': 'off',
-    'function-paren-newline': 'off',
-    'generator-star-spacing': 'off',
-    'global-require': 'off',
-    'handle-callback-err': 'off',
-    'implicit-arrow-linebreak': 'off',
-    indent: 'off',
-    'key-spacing': 'off',
-    'keyword-spacing': 'off',
-    'linebreak-style': 'off',
-    'lines-around-directive': 'off',
-    'lines-between-class-members': 'off',
-    'max-len': 'off',
-    'max-statements-per-line': 'off',
-    'multiline-ternary': 'off',
-    'new-parens': 'off',
-    'newline-per-chained-call': 'off',
-    'no-buffer-constructo': 'off',
-    'no-buffer-constructor': 'off',
-    'no-confusing-arrow': 'off',
-    'no-extra-semi': 'off',
-    'no-floating-decimal': 'off',
-    'no-mixed-operators': 'off',
-    'no-mixed-spaces-and-tabs': 'off',
-    'no-multi-spaces': 'off',
-    'no-multiple-empty-lines': 'off',
-    'no-new-object': 'off',
-    'no-new-require': 'off',
-    'no-new-symbol': 'off',
-    'no-path-concat': 'off',
-    'no-return-await': 'off',
-    'no-spaced-func': 'off',
-    'no-tabs': 'off',
-    'no-trailing-spaces': 'off',
-    'no-whitespace-before-property': 'off',
-    'nonblock-statement-body-position': 'off',
-    'object-curly-newline': 'off',
-    'object-curly-spacing': 'off',
-    'object-property-newline': 'off',
-    'one-var-declaration-per-line': 'off',
-    'operator-linebreak': 'off',
-    'padded-blocks': 'off',
-    'quote-props': 'off',
-    quotes: 'off',
-    'rest-spread-spacing': 'off',
-    semi: 'off',
-    'semi-spacing': 'off',
-    'semi-style': 'off',
-    'space-before-blocks': 'off',
-    'space-before-function-paren': 'off',
-    'space-in-parens': 'off',
-    'space-infix-ops': 'off',
-    'space-unary-ops': 'off',
-    'spaced-comment': 'off',
-    'switch-colon-spacing': 'off',
-    'template-curly-spacing': 'off',
-    'template-tag-spacing': 'off',
-    'wrap-iife': 'off',
-    'yield-star-spacing': 'off',
-});
-
-const airbnbBaseRules = async (): Promise<TFlatConfigItem['rules']> => {
+const getAirbnbBaseRules = async (): Promise<TFlatConfigItem['rules']> => {
     const [
         bestPracticesRules,
         errorRules,
@@ -114,7 +40,6 @@ const airbnbBaseRules = async (): Promise<TFlatConfigItem['rules']> => {
         strictRules,
         styleRules,
         variableRules,
-        deprecatedRulesList,
     ] = await Promise.all([
         bestPractices(),
         errors(),
@@ -123,8 +48,8 @@ const airbnbBaseRules = async (): Promise<TFlatConfigItem['rules']> => {
         strict(),
         style(),
         variables(),
-        deprecatedRules(),
     ]);
+
     return {
         ...eslintConfigAirbnbBaseRulesBestPractices.rules,
         ...eslintConfigAirbnbBaseRulesErrors.rules,
@@ -140,7 +65,6 @@ const airbnbBaseRules = async (): Promise<TFlatConfigItem['rules']> => {
         ...strictRules,
         ...styleRules,
         ...variableRules,
-        ...deprecatedRulesList,
     };
 };
 
@@ -148,6 +72,7 @@ const airbnbBaseReactRules = async (): Promise<TFlatConfigItem['rules']> => ({
     ...eslintConfigAirbnbRulesReact.rules,
     ...eslintConfigAirbnbRulesReactA11y.rules,
     ...eslintConfigAirbnbRulesReactHooks.rules,
+
     /**
      * deprecated rules
      */
@@ -166,4 +91,4 @@ const airbnbBaseImports = async (): Promise<{
     },
 });
 
-export { airbnbBaseImports, airbnbBaseReactRules, airbnbBaseRules };
+export { airbnbBaseImports, airbnbBaseReactRules, getAirbnbBaseRules };

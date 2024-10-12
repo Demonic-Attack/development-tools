@@ -35,11 +35,13 @@ interface IOptionsOverrides {
 
 interface IOptionsTypeScriptParserOptions {
     parserOptions?: Partial<ParserOptions>;
+
     /**
      * Glob patterns for files that should be type aware.
      * @default ['**\/*.{ts,tsx}']
      */
     filesTypeAware?: string[];
+
     /**
      * Glob patterns for files that should not be type aware.
      * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
@@ -73,13 +75,24 @@ interface IOptionsRegExp {
     level?: 'error' | 'warn';
 }
 
+interface IOptionsJs {
+    configurations?: Partial<{
+        onEslintAirBnbBaseConfigRules?: TFlatConfigItem['rules'] | boolean;
+        onEslintAllConfigRules?: TFlatConfigItem['rules'] | boolean;
+        onEslintBaseEslintConfigRules?: TFlatConfigItem['rules'] | boolean;
+        onEslintBaseEslintFormattingConfigRules?: TFlatConfigItem['rules'] | boolean;
+        onEslintRecommendedConfigRules?: TFlatConfigItem['rules'] | boolean;
+    }>;
+}
+
 type TOptionsTypescript =
     | (IOptionsOverrides & IOptionsTypeScriptParserOptions)
     | (IOptionsOverrides & IOptionsTypeScriptWithTypes);
 
 interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectType {
     gitignore?: FlatGitignoreOptions | boolean;
-    js?: IOptionsOverrides;
+    js?: IOptionsJs | IOptionsOverrides;
+
     /**
      * By default, the plugins is enabled
      */
@@ -92,6 +105,7 @@ interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectTyp
     promise?: IOptionsOverrides | boolean;
     regexp?: (IOptionsOverrides & IOptionsRegExp) | boolean;
     unicorn?: IOptionsOverrides | boolean;
+
     /**
      * By default, the plugins is enabled if the current package is in your project
      * @example typescript, react, tailwindcss, etc
@@ -101,18 +115,22 @@ interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectTyp
     react?: IOptionsOverrides | boolean;
     ts?: TOptionsTypescript | boolean;
     tw?: IOptionsOverrides | boolean;
+
     /**
      * By default, the plugins is disabled
      */
     arca?: IOptionsOverrides | boolean;
+    json?: IOptionsOverrides | boolean;
     jsx?: boolean;
     ['no-commented-code']?: boolean;
     sonarjs?: IOptionsOverrides | boolean;
     ['sort-class-members']?: IOptionsOverrides | boolean;
+
     /**
      * Rename plugins
      */
     autoRenamePlugins?: boolean;
+
     /**
      * Override rules
      */
@@ -123,6 +141,7 @@ interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectTyp
         esx?: TFlatConfigItem['rules'];
         import?: TFlatConfigItem['rules'];
         js?: TFlatConfigItem['rules'];
+        json?: TFlatConfigItem['rules'];
         mutation?: TFlatConfigItem['rules'];
         next?: TFlatConfigItem['rules'];
         perfectionist?: TFlatConfigItem['rules'];
@@ -143,6 +162,7 @@ export type {
     IOptionsFiles,
     IOptionsImport,
     IOptionsIsInEditor,
+    IOptionsJs,
     IOptionsOverrides,
     IOptionsPrettier,
     IOptionsProjectType,

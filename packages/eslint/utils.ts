@@ -13,11 +13,13 @@ const isBoolean = <T>(value: T): boolean => typeof value === 'boolean';
 
 const combine = async (...configs: Awaitable<TFlatConfigItem | TFlatConfigItem[]>[]): Promise<TFlatConfigItem[]> => {
     const result = await Promise.all(configs);
+
     return result.flat();
 };
 
 const interopDefault = async <T>(m: Awaitable<T>): Promise<T extends { default: infer U } ? U : T> => {
     const resolved = await m;
+
     return (resolved as any).default || resolved;
 };
 

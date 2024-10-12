@@ -4,6 +4,7 @@ import { renameRules } from '../utils';
 
 const comments = async (options: IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
     const { overrides = {} } = options;
+
     return [
         {
             name: 'comments/rules',

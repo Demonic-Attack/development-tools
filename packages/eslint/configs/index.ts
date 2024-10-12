@@ -5,6 +5,7 @@ export * from './esx';
 export * from './ignores';
 export * from './import';
 export * from './javascript';
+export * from './json';
 export * from './jsx';
 export * from './mutation';
 export * from './next';

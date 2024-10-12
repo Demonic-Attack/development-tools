@@ -3,6 +3,7 @@ import type { IOptionsPrettier, TFlatConfigItem } from '../types';
 
 const prettier = async (options: IOptionsPrettier = {}): Promise<TFlatConfigItem[]> => {
     const { isDisablingRecommendedRulesForPrettier = false } = options;
+
     return [
         {
             name: 'prettier/rules',

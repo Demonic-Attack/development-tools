@@ -5,11 +5,11 @@ const disables = async (): Promise<TFlatConfigItem[]> => [
     {
         name: 'disables/allow-default-export',
         files: [
-            `**/*config*.?([cm])[jt]s?(x)`,
-            `**/{views,pages,routes,middleware,plugins,api,modules}/**/*.?([cm])[jt]s?(x)`,
-            `**/{index,vite,esbuild,rollup,rolldown,webpack,rspack}.?([cm])[jt]s?(x)`,
+            '**/*config*.?([cm])[jt]s?(x)',
+            '**/{views,pages,routes,middleware,plugins,api,modules}/**/*.?([cm])[jt]s?(x)',
+            '**/{index,vite,esbuild,rollup,rolldown,webpack,rspack}.?([cm])[jt]s?(x)',
             '**/*.d.ts',
-            `**/*.md/**`,
+            '**/*.md/**',
             '**/.prettierrc*',
         ],
         rules: {
@@ -27,8 +27,8 @@ const disables = async (): Promise<TFlatConfigItem[]> => [
     {
         name: 'disables/config-files',
         files: [
-            `**/*.config.?([cm])js?(x)`,
-            `**/*.config.?([m])ts?(x)`,
+            '**/*.config.?([cm])js?(x)',
+            '**/*.config.?([m])ts?(x)',
         ],
         rules: {
             'arca/no-default-export': 'off',

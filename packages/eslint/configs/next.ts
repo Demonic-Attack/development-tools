@@ -5,6 +5,7 @@ import { fixupPluginRules } from '@eslint/compat';
 
 const next = async (options: IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
     const { overrides = {} } = options;
+
     return [
         {
             name: 'next/rules',

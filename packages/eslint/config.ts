@@ -10,6 +10,7 @@ import {
     ignores,
     imrt,
     javascript,
+    // json,
     jsx,
     mutation,
     next,
@@ -37,9 +38,16 @@ const defaultPluginRenaming = {
     tailwindcss: 'tw',
 };
 
+/**
+ * The name of the language used for linting. This is used to determine the
+ * parser and other language-specific settings.
+ * @since 9.7.0
+ */
+// language?: string;
 const flatConfigProperties = [
     'name',
     'languageOptions',
+    'language',
     'linterOptions',
     'processor',
     'plugins',
@@ -55,10 +63,12 @@ type TOverridesType = Partial<Linter.RulesRecord & RuleOptions>;
 
 const isSubOptions = <K extends TOptionConfigKey>(options: IOptionsConfig, key: K): TResolvedOptionsConfig<K> => {
     const option = options[key];
+
     return isBoolean(option) ? ({} as TResolvedOptionsConfig<K>) : ((option ?? {}) as TResolvedOptionsConfig<K>);
 };
 const getOverrides = <K extends TOverridesKey>(options: IOptionsConfig, key: K): TOverridesType => {
     const sub = isSubOptions(options, key);
+
     return {
         ...options.overrides?.[key],
         ...('overrides' in sub ? sub.overrides : {}),
@@ -74,6 +84,7 @@ const config = async (
     const {
         autoRenamePlugins = true,
         componentExtensions = [],
+
         /**
          * By default, the plugins is enabled
          */
@@ -87,6 +98,7 @@ const config = async (
         promise: enablePromise = true,
         regexp: enableRegexp = true,
         unicorn: enableUnicorn = true,
+
         /**
          * By default, the plugins is enabled if the current package is in your project
          * @example typescript, react, tailwindcss, etc
@@ -96,10 +108,13 @@ const config = async (
         react: enableReact = isPackageExists('react'),
         ts: enableTypeScript = isPackageExists('typescript'),
         tw: enableTailwindcss = isPackageExists('tailwindcss'),
+
         /**
          * By default, the plugins is disabled
          */
         arca: enableArca = false,
+
+        // json: enableJson = false,
         jsx: enableJsx = false,
         'no-commented-code': enableNoCommentsCode = false,
         sonarjs: enableSonarjs = false,
@@ -129,15 +144,20 @@ const config = async (
             );
         }
     }
+
     /**
      * By default config
      */
+    const jsOptions = isSubOptions(options, 'js');
+
     configs.push(
         ignores(options.ignores),
         javascript({
+            ...jsOptions,
             overrides: getOverrides(options, 'js'),
         }),
     );
+
     /**
      * By default, the plugins is enabled
      */
@@ -207,6 +227,7 @@ const config = async (
             }),
         );
     }
+
     /**
      * By default, the plugins is disabled
      */
@@ -226,6 +247,14 @@ const config = async (
             }),
         );
     }
+
+    // if (enableJson) {
+    //     configs.push(
+    //         json({
+    //             overrides: getOverrides(options, 'json'),
+    //         }),
+    //     );
+    // }
     /**
      * By default, the plugins is enabled if the current package is in your project
      * @example typescript, react, tailwindcss, prettier etc
@@ -267,6 +296,7 @@ const config = async (
             }),
         );
     }
+
     /**
      *
      * LAST POSITIONS enablePrettier
@@ -276,6 +306,7 @@ const config = async (
         'isDisablingRecommendedRulesForPrettier' in prettierOption ?
             prettierOption.isDisablingRecommendedRulesForPrettier
         :   false;
+
     if (enablePrettier) {
         configs.push(
             prettier({

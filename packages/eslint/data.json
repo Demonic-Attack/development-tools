@@ -1,0 +1,10 @@
+{
+    "BAD": {
+        "foo": "val",
+        "foo": "val"
+    },
+    "GOOD": {
+        "foo": "val",
+        "bar": "val"
+    }
+}

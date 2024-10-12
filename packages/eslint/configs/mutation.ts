@@ -4,6 +4,7 @@ import { renameRules } from '../utils';
 
 const mutation = async (options: IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
     const { overrides = {} } = options;
+
     return [
         {
             name: 'mutation/rules',

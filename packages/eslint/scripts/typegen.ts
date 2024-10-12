@@ -8,6 +8,7 @@ import {
     esx,
     imrt,
     javascript,
+    // json,
     jsx,
     mutation,
     next,
@@ -48,6 +49,8 @@ const configs = await combine(
     typescript(),
     prettier(),
     arca(),
+
+    // json(),
     comments(),
     mutation(),
     promise(),

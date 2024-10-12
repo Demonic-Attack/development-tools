@@ -76,10 +76,12 @@ const react = async (
             },
             rules: {
                 ...eslintJsxA11yPlugin.flatConfigs.recommended.rules,
+
                 /**
                  *  TODO: airbnb rules
                  */
                 ...(await airbnbBaseReactRules()),
+
                 /**
                  *  TODO: react-naming-convention rules
                  */
@@ -88,6 +90,7 @@ const react = async (
                     'as-needed',
                 ],
                 'react-naming-convention/use-state': 'warn',
+
                 /**
                  *  TODO: react-web-api rules
                  */
@@ -95,6 +98,7 @@ const react = async (
                 'react-web-api/no-leaked-interval': 'error',
                 'react-web-api/no-leaked-resize-observer': 'error',
                 'react-web-api/no-leaked-timeout': 'error',
+
                 /**
                  *  TODO: react-hooks-extra rules
                  */
@@ -102,6 +106,7 @@ const react = async (
                 'react-hooks-extra/no-direct-set-state-in-use-effect': 'warn',
                 'react-hooks-extra/no-redundant-custom-hook': 'warn',
                 'react-hooks-extra/prefer-use-state-lazy-initialization': 'warn',
+
                 /**
                  *  TODO: react-dom rules
                  */
@@ -116,6 +121,7 @@ const react = async (
                 'react-dom/no-script-url': 'warn',
                 'react-dom/no-unsafe-iframe-sandbox': 'warn',
                 'react-dom/no-unsafe-target-blank': 'warn',
+
                 /**
                  *  TODO: react-refresh
                  */
@@ -144,6 +150,7 @@ const react = async (
                         ],
                     },
                 ],
+
                 /**
                  * TODO: Default React Rules
                  */
@@ -175,6 +182,7 @@ const react = async (
                 'react/prop-types': 'error',
                 'react/react-in-jsx-scope': 'error',
                 'react/require-render-return': 'error',
+
                 /**
                  * TODO: @eslint-react rules
                  */
@@ -182,6 +190,7 @@ const react = async (
                 '@eslint-react/prefer-destructuring-assignment': 'warn',
                 '@eslint-react/prefer-shorthand-boolean': 'warn',
                 '@eslint-react/prefer-shorthand-fragment': 'warn',
+
                 /**
                  * TODO: React-X rules
                  */

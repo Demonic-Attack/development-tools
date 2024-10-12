@@ -3,6 +3,7 @@ import type { IOptionsOverrides, TFlatConfigItem } from '../types';
 
 const promise = async (options: IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
     const { overrides = {} } = options;
+
     return [
         {
             name: 'promise/rules',

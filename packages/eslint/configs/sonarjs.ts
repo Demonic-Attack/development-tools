@@ -3,6 +3,7 @@ import type { IOptionsOverrides, TFlatConfigItem } from '../types';
 
 const sonarjs = async (options: IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
     const { overrides = {} } = options;
+
     return [
         {
             name: 'sonarjs/rules',

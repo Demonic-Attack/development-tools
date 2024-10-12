@@ -51,6 +51,7 @@ const p11t = {
 
 const perfectionist = async (options: IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
     const { overrides = {} } = options;
+
     return [
         {
             name: 'perfectionist/rules',

@@ -4,6 +4,7 @@ import { renameRules } from '../utils';
 
 const tailwindcss = async (options: IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
     const { overrides = {} } = options;
+
     return [
         {
             name: 'tailwindcss/rules',
