@@ -30,6 +30,7 @@ export default config({
      * By default, the plugins is enabled if the current package is in your project
      * @example typescript, react, tailwindcss, etc
      */
+    eslint: true,
     next: true,
     'no-commented-code': true,
     prettier: true,

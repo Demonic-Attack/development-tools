@@ -64,8 +64,8 @@ const getSharedRules = async (): Promise<TFlatConfigItem['rules']> => ({
     ],
 });
 
-const javascript = async (options: IOptionsJs & IOptionsOverrides): Promise<TFlatConfigItem[]> => {
-    const { configurations = {}, overrides = {} } = options || {};
+const javascript = async (options: IOptionsJs & IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
+    const { configurations = {}, overrides = {} } = options;
 
     const defaultConfigurations: IOptionsJs['configurations'] = {
         onEslintAirBnbBaseConfigRules: false,

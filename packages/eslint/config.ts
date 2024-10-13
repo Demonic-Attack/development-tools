@@ -6,6 +6,7 @@ import {
     arca,
     comments,
     disables,
+    eslint,
     esx,
     ignores,
     imrt,
@@ -47,7 +48,6 @@ const defaultPluginRenaming = {
 const flatConfigProperties = [
     'name',
     'languageOptions',
-    'language',
     'linterOptions',
     'processor',
     'plugins',
@@ -113,7 +113,7 @@ const config = async (
          * By default, the plugins is disabled
          */
         arca: enableArca = false,
-
+        eslint: enableEslint = false,
         // json: enableJson = false,
         jsx: enableJsx = false,
         'no-commented-code': enableNoCommentsCode = false,
@@ -233,6 +233,7 @@ const config = async (
      */
     if (enableJsx) configs.push(jsx());
     if (enableNoCommentsCode) configs.push(noCommentedCode());
+    if (enableEslint) configs.push(eslint());
     if (enableSortClassMembers) {
         configs.push(
             sortClassMembers({

@@ -120,6 +120,7 @@ interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectTyp
      * By default, the plugins is disabled
      */
     arca?: IOptionsOverrides | boolean;
+    eslint?: IOptionsOverrides | boolean;
     json?: IOptionsOverrides | boolean;
     jsx?: boolean;
     ['no-commented-code']?: boolean;

@@ -102,6 +102,8 @@ export default config(
         arca: true,
         js: {
             overrides: {
+                curly: 'off',
+                'no-shadow': 'off',
                 'no-useless-computed-key': 'off',
                 'func-style': [
                     'error',
