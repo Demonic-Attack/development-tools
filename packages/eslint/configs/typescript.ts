@@ -156,6 +156,7 @@ const typescript = async (
                         ],
                     }
                 :   {}),
+                // 'ts/interface'
                 ...overrides,
             },
         },

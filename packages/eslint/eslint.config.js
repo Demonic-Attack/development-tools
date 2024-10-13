@@ -103,6 +103,10 @@ export default config(
         js: {
             overrides: {
                 'no-useless-computed-key': 'off',
+                'func-style': [
+                    'error',
+                    'expression',
+                ],
             },
         },
         'no-commented-code': true,

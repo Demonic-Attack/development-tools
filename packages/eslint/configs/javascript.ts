@@ -1,10 +1,11 @@
 import globals from 'globals';
 
 import { ECMA_VERSION } from '../constants';
-import { eslintConfigBaseESLint, eslintConfigESLintFormatting, eslintJsPlugin } from '../plugins';
+import { eslintJsPlugin } from '../plugins';
 import type { IOptionsJs, IOptionsOverrides, TFlatConfigItem } from '../types';
 
 import { getAirbnbBaseRules } from './airbnb';
+import { eslintConfigBase, eslintConfigformatting } from './eslint-config';
 
 const getSharedRules = async (): Promise<TFlatConfigItem['rules']> => ({
     'accessor-pairs': [
@@ -63,28 +64,36 @@ const getSharedRules = async (): Promise<TFlatConfigItem['rules']> => ({
     ],
 });
 
-const javascript = async (options: IOptionsJs & IOptionsOverrides = {}): Promise<TFlatConfigItem[]> => {
-    const {
-        configurations = {
-            onEslintAirBnbBaseConfigRules: false,
-            onEslintAllConfigRules: false,
-            onEslintBaseEslintConfigRules: true,
-            onEslintBaseEslintFormattingConfigRules: false,
-            onEslintRecommendedConfigRules: true,
-        },
-        overrides = {},
-    } = options;
+const javascript = async (options: IOptionsJs & IOptionsOverrides): Promise<TFlatConfigItem[]> => {
+    const { configurations = {}, overrides = {} } = options || {};
+
+    const defaultConfigurations: IOptionsJs['configurations'] = {
+        onEslintAirBnbBaseConfigRules: false,
+        onEslintAllConfigRules: false,
+        /**
+         * By @default true
+         */
+        onEslintBaseEslintConfigRules: true,
+        onEslintBaseEslintFormattingConfigRules: false,
+        /**
+         * By @default true
+         */
+        onEslintRecommendedConfigRules: true,
+    };
+
     const {
         onEslintAirBnbBaseConfigRules,
         onEslintAllConfigRules,
         onEslintBaseEslintConfigRules,
         onEslintBaseEslintFormattingConfigRules,
         onEslintRecommendedConfigRules,
-    } = configurations;
+    } = { ...defaultConfigurations, ...configurations };
 
     const { all, recommended } = eslintJsPlugin.configs;
 
     const sharedRules = await getSharedRules();
+    const { js } = await eslintConfigBase();
+    const { formatting } = await eslintConfigformatting();
     const airbnbRules = await getAirbnbBaseRules();
 
     return [
@@ -123,9 +132,9 @@ const javascript = async (options: IOptionsJs & IOptionsOverrides = {}): Promise
             rules: {
                 ...(onEslintAllConfigRules ? all.rules : {}),
                 ...(onEslintRecommendedConfigRules ? recommended.rules : {}),
-                ...(onEslintBaseEslintConfigRules ? eslintConfigBaseESLint.rules : {}),
+                ...(onEslintBaseEslintConfigRules ? js.rules : {}),
+                ...(onEslintBaseEslintFormattingConfigRules ? formatting.rules : {}),
                 ...(onEslintAirBnbBaseConfigRules ? airbnbRules : {}),
-                ...(onEslintBaseEslintFormattingConfigRules ? eslintConfigESLintFormatting.rules : {}),
                 ...sharedRules,
                 ...overrides,
             },

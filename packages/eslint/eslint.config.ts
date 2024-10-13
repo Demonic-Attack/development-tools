@@ -7,30 +7,7 @@ export default config({
     ],
     js: {
         configurations: {
-            /**
-             * @default false airbnb eslint config base rules
-             */
-            eslintAirBnbBaseConfig: true,
-
-            /**
-             * @default false all eslint config rules
-             */
-            eslintAllConfig: true,
-
-            /**
-             * @default false base eslint config rules
-             */
-            eslintBaseEslintConfig: true,
-
-            /**
-             * @default false enable if you want to not use prettier
-             */
-            eslintBaseEslintFormattingConfig: true,
-
-            /**
-             * @default true default eslint recommended config rules
-             */
-            eslintRecommendedConfig: true,
+            // onEslintBaseEslintFormattingConfigRules: false,
         },
         overrides: {},
     },

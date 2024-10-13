@@ -1,12 +1,5 @@
 export { default as eslintJsPlugin } from '@eslint/js';
 export { default as eslintJsonPlugin } from '@eslint/json';
-
-// @ts-expect-error eslint-config-eslint/base is not typed
-export { default as eslintConfigBaseESLint } from 'eslint-config-eslint/base';
-
-// @ts-expect-error eslint-config-eslint/formatting is not typed
-export { default as eslintConfigESLintFormatting } from 'eslint-config-eslint/formatting';
-
 // @ts-expect-error @eslint-community/eslint-plugin-eslint-comments is not typed
 export { default as eslintCommentsPlugin } from '@eslint-community/eslint-plugin-eslint-comments';
 export { default as eslintReactEslintPlugin } from '@eslint-react/eslint-plugin';
