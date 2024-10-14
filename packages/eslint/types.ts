@@ -63,7 +63,7 @@ interface IOptionsTypeScriptWithTypes {
 }
 
 interface IOptionsPrettier {
-    isDisablingRecommendedRulesForPrettier?: boolean;
+    onPrettierRecommendedConfigRules?: boolean;
 }
 
 interface IOptionsImport {

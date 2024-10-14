@@ -132,7 +132,15 @@ const javascript = async (options: IOptionsJs & IOptionsOverrides = {}): Promise
             rules: {
                 ...(onEslintAllConfigRules ? all.rules : {}),
                 ...(onEslintRecommendedConfigRules ? recommended.rules : {}),
-                ...(onEslintBaseEslintConfigRules ? js.rules : {}),
+                ...(onEslintBaseEslintConfigRules ?
+                    {
+                        ...js.rules,
+                        'func-style': [
+                            'error',
+                            'expression',
+                        ],
+                    }
+                :   {}),
                 ...(onEslintBaseEslintFormattingConfigRules ? formatting.rules : {}),
                 ...(onEslintAirBnbBaseConfigRules ? airbnbRules : {}),
                 ...sharedRules,

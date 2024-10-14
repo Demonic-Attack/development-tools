@@ -303,15 +303,10 @@ const config = async (
      * LAST POSITIONS enablePrettier
      */
     const prettierOption = isSubOptions(options, 'prettier');
-    const isDisablingRecommendedRulesForPrettier =
-        'isDisablingRecommendedRulesForPrettier' in prettierOption ?
-            prettierOption.isDisablingRecommendedRulesForPrettier
-        :   false;
-
     if (enablePrettier) {
         configs.push(
             prettier({
-                isDisablingRecommendedRulesForPrettier,
+                ...prettierOption,
             }),
         );
     }

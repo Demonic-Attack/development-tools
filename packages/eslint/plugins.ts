@@ -3,6 +3,7 @@ export { default as eslintJsonPlugin } from '@eslint/json';
 // @ts-expect-error @eslint-community/eslint-plugin-eslint-comments is not typed
 export { default as eslintCommentsPlugin } from '@eslint-community/eslint-plugin-eslint-comments';
 export { default as eslintReactEslintPlugin } from '@eslint-react/eslint-plugin';
+// @ts-expect-error eslint-plugin-eslint-plugin is not typed
 export { default as eslintPlugin } from 'eslint-plugin-eslint-plugin';
 // @ts-expect-error @next/eslint-plugin-next is not typed
 export { default as eslintNextPlugin } from '@next/eslint-plugin-next';

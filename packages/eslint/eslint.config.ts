@@ -7,6 +7,7 @@ export default config({
     ],
     js: {
         configurations: {
+            onEslintAirBnbBaseConfigRules: true,
             // onEslintBaseEslintFormattingConfigRules: false,
         },
         overrides: {},
