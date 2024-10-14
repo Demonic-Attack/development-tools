@@ -1,6 +1,6 @@
 import { name, version } from '../package.json';
 
-import { rule as interfacePrefix } from './rules/interface-prefix';
+import interfacePrefix from './rules/interface-prefix';
 
 const recommendedRules = {
     'interface-prefix': interfacePrefix,

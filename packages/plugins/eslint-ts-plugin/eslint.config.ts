@@ -1,5 +1,13 @@
 import { configs } from './src/index';
 
+/**
+ * @type {import('eslint').Linter.Config}
+ */
 export default [
-  configs.recommended,
+    configs.recommended,
+    {
+        rules: {
+            'interface-prefix': 'error',
+        },
+    },
 ];

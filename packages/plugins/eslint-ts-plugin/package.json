@@ -17,6 +17,7 @@
         "build": "pnpm build:clean && tsup",
         "build:clean": "rimraf dist",
         "clean": "rimraf node_modules",
+        "build:inspector": "pnpm build && pnpm dlx @eslint/config-inspector build",
         "dev": "pnpm dlx @eslint/config-inspector --config eslint.config.ts",
         "format": "prettier -w \"**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,json,prisma,md}\"",
         "lint": "eslint",

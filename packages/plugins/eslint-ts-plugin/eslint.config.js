@@ -1,25 +1,20 @@
 import { config } from '@demonicattack/eslint';
+import { configs } from './dist/index.js';
 
-export default config({
+export default config(
+  // configs.recommended,
+  // {
+  //   rules: {
+  //     "interface-prefix": ["error", "always"]
+  //   }
+  // },
+  {
     js: {
-        overrides: {
-            curly: 'off',
-            'new-cap': 'off',
-            'func-style': [
-                'error',
-                'expression',
-            ],
+        configurations: {
+            onEslintAirBnbBaseConfigRules: true,
         },
-    },
-    import: {
         overrides: {
-            'import/prefer-default-export': 'off',
-            'import/no-default-export': 'off',
-        },
-    },
-    sonarjs: {
-        overrides: {
-            'sonarjs/new-cap': 'off',
+            'no-undefined': 'off',
         },
     },
     ts: {
@@ -28,5 +23,15 @@ export default config({
             'ts/no-unsafe-argument': 'off',
         },
     },
+    import: {
+        overrides: {
+            'import/prefer-default-export': 'off',
+            'import/no-default-export': 'off',
+        },
+    },
+    sonarjs: true,
     arca: true,
+    prettier: {
+        onPrettierRecommendedConfigRules: true,
+    },
 });

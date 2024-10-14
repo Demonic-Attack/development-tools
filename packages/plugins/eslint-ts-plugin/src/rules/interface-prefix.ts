@@ -7,7 +7,8 @@ const defaultOptions = ['never'];
 
 const isPrefixedWithI = (name: string) => typeof name === 'string' && /^I[A-Z]/u.test(name);
 
-const rule = createRule<[], CamelCase<typeof RULE_NAME>>({
+// eslint-disable-next-line arca/no-default-export
+export default createRule<[], CamelCase<typeof RULE_NAME>>({
     meta: {
         type: 'suggestion',
         docs: {
@@ -43,4 +44,8 @@ const rule = createRule<[], CamelCase<typeof RULE_NAME>>({
     defaultOptions: [],
 });
 
-export { rule };
+// const rule = createRule<[], CamelCase<typeof RULE_NAME>>({
+
+// });
+
+// export { rule };
