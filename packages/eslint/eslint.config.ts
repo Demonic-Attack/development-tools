@@ -25,7 +25,11 @@ export default config({
     perfectionist: true,
     promise: true,
     regexp: true,
-    unicorn: true,
+    unicorn: {
+        onEslintBaseUnicornConfigRules: true,
+        onUnicornRecommendedConfigRules: true,
+        overrides: {},
+    },
 
     /**
      * By default, the plugins is enabled if the current package is in your project
@@ -34,7 +38,9 @@ export default config({
     eslint: true,
     next: true,
     'no-commented-code': true,
-    prettier: true,
+    prettier: {
+        onPrettierRecommendedConfigRules: true,
+    },
     react: true,
     ts: true,
     tw: true,

@@ -220,9 +220,12 @@ const config = async (
         );
     }
     if (enableRegexp) configs.push(regexp(typeof enableRegexp === 'boolean' ? {} : enableRegexp));
+
+    const unicornOptions = isSubOptions(options, 'unicorn');
     if (enableUnicorn) {
         configs.push(
             unicorn({
+                ...unicornOptions,
                 overrides: getOverrides(options, 'unicorn'),
             }),
         );

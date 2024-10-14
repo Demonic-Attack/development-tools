@@ -75,6 +75,11 @@ interface IOptionsRegExp {
     level?: 'error' | 'warn';
 }
 
+interface IOptionsUnicorn {
+    onEslintBaseUnicornConfigRules?: TFlatConfigItem['rules'] | boolean;
+    onUnicornRecommendedConfigRules?: TFlatConfigItem['rules'] | boolean;
+}
+
 interface IOptionsJs {
     configurations?: Partial<{
         onEslintAirBnbBaseConfigRules?: TFlatConfigItem['rules'] | boolean;
@@ -104,7 +109,7 @@ interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectTyp
     perfectionist?: IOptionsOverrides | boolean;
     promise?: IOptionsOverrides | boolean;
     regexp?: (IOptionsOverrides & IOptionsRegExp) | boolean;
-    unicorn?: IOptionsOverrides | boolean;
+    unicorn?: IOptionsOverrides | IOptionsUnicorn | boolean;
 
     /**
      * By default, the plugins is enabled if the current package is in your project
@@ -170,6 +175,7 @@ export type {
     IOptionsRegExp,
     IOptionsTypeScriptParserOptions,
     IOptionsTypeScriptWithTypes,
+    IOptionsUnicorn,
     TConfig,
     TConfigNames,
     TFlatConfigItem,

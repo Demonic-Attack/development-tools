@@ -7,9 +7,6 @@ export { default as eslintReactEslintPlugin } from '@eslint-react/eslint-plugin'
 export { default as eslintPlugin } from 'eslint-plugin-eslint-plugin';
 // @ts-expect-error @next/eslint-plugin-next is not typed
 export { default as eslintNextPlugin } from '@next/eslint-plugin-next';
-
-// @ts-expect-error eslint-config-prettier is not typed
-export { default as eslintPrettierConfig } from 'eslint-config-prettier';
 export { default as eslintArcaPlugin } from 'eslint-plugin-arca';
 
 // @ts-expect-error eslint-plugin-better-mutation is not typed
