@@ -1,20 +1,10 @@
 import { config } from '@demonicattack/eslint';
-import { configs } from './dist/index.js';
+// import Config from './dist/index.js';
 
-export default config(
-  // configs.recommended,
-  // {
-  //   rules: {
-  //     "interface-prefix": ["error", "always"]
-  //   }
-  // },
-  {
+export default config({
     js: {
         configurations: {
             onEslintAirBnbBaseConfigRules: true,
-        },
-        overrides: {
-            'no-undefined': 'off',
         },
     },
     ts: {

@@ -1,5 +1,5 @@
 import { createRuleForPlugin } from '@demonicattack/shared';
 
-const createRule = createRuleForPlugin('eslint-ts-plugin');
+const createRule = createRuleForPlugin('ts-plugin');
 
 export { createRule };

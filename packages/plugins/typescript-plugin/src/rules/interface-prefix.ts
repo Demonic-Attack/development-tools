@@ -2,11 +2,15 @@ import type { CamelCase } from 'string-ts';
 
 import { applyDefault, createRule } from '../utils';
 
+// eslint-disable-next-line ts-plugin/interface-prefix
+interface myOptions {
+    never?: boolean;
+}
+
 const RULE_NAME = 'interface-prefix';
 const defaultOptions = ['never'];
 
 const isPrefixedWithI = (name: string) => typeof name === 'string' && /^I[A-Z]/u.test(name);
-
 // eslint-disable-next-line arca/no-default-export
 export default createRule<[], CamelCase<typeof RULE_NAME>>({
     meta: {
@@ -20,18 +24,18 @@ export default createRule<[], CamelCase<typeof RULE_NAME>>({
         schema: [],
     },
     name: RULE_NAME,
-    create(context, options) {
-        const option = applyDefault(defaultOptions, options)[0];
-        const never = option !== 'always';
+    create(context) {
+        // console.log("🚀 ~ create ~ options:", options)
+        // const option = applyDefault(defaultOptions, options)[0];
+        // console.log("🚀 ~ create ~ option:", option)
+        // const never = option !== 'always';
         return {
             TSInterfaceDeclaration(interfaceNode) {
-                if (never) {
-                    if (isPrefixedWithI(interfaceNode.id.name)) {
-                        context.report({
-                            messageId: 'interfacePrefix',
-                            node: interfaceNode.id,
-                        });
-                    }
+                if (isPrefixedWithI(interfaceNode.id.name)) {
+                    context.report({
+                        messageId: 'interfacePrefix',
+                        node: interfaceNode.id,
+                    });
                 } else if (!isPrefixedWithI(interfaceNode.id.name)) {
                     context.report({
                         messageId: 'interfacePrefix',

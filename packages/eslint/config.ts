@@ -77,7 +77,7 @@ const getOverrides = <K extends TOverridesKey>(options: IOptionsConfig, key: K):
 
 const config = async (
     options: IOptionsConfig & Omit<TFlatConfigItem, 'files'> = {},
-    ...config: Awaitable<
+    ...userConfigs: Awaitable<
         FlatConfigComposer<Linter.Config, TConfigNames> | Linter.Config[] | TFlatConfigItem | TFlatConfigItem[]
     >[]
 ): Promise<FlatConfigComposer<TFlatConfigItem, TConfigNames>> => {
@@ -324,7 +324,7 @@ const config = async (
     if (Object.keys(fusedConfig).length !== 0) configs.push([fusedConfig]);
 
     let composer = new FlatConfigComposer<TFlatConfigItem, TConfigNames>();
-    const resolvedConfig = await Promise.all(config);
+    const resolvedConfig = await Promise.all(userConfigs);
 
     const configArray = resolvedConfig.map(item => {
         if (Array.isArray(item)) return item;
