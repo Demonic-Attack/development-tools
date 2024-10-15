@@ -23,6 +23,9 @@ importers:
 
   packages/eslint:
     dependencies:
+      '@demonicattack/eslint-plugin':
+        specifier: workspace:*
+        version: link:../plugins/eslint-plugin
       '@eslint-community/eslint-plugin-eslint-comments':
         specifier: ^4.4.0
         version: 4.4.0(eslint@9.12.0(jiti@1.21.6))
@@ -192,6 +195,9 @@ importers:
 
   packages/plugins/eslint-plugin:
     dependencies:
+      '@demonicattack/shared':
+        specifier: workspace:*
+        version: link:../../shared
       '@demonicattack/typescript-plugin':
         specifier: workspace:*
         version: link:../typescript-plugin
@@ -205,9 +211,6 @@ importers:
       '@demonicattack/prettier':
         specifier: workspace:*
         version: link:../../prettier
-      '@demonicattack/shared':
-        specifier: workspace:*
-        version: link:../../shared
       '@demonicattack/ts':
         specifier: workspace:*
         version: link:../../ts

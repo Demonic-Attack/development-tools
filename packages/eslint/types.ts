@@ -97,7 +97,7 @@ type TOptionsTypescript =
 interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectType {
     gitignore?: FlatGitignoreOptions | boolean;
     js?: IOptionsJs | IOptionsOverrides;
-
+    demonicattack?: IOptionsOverrides;
     /**
      * By default, the plugins is enabled
      */

@@ -6,8 +6,8 @@ export default config({
             onEslintAirBnbBaseConfigRules: true,
         },
         overrides: {
-          "prefer-named-capture-group": 'off',
-        }
+            'prefer-named-capture-group': 'off',
+        },
     },
     ts: {
         tsconfigPath: 'tsconfig.json',
@@ -22,9 +22,9 @@ export default config({
         },
     },
     sonarjs: {
-      overrides: {
-        'sonarjs/new-cap': 'off',
-      }
+        overrides: {
+            'sonarjs/new-cap': 'off',
+        },
     },
     arca: true,
     prettier: {

@@ -5,6 +5,7 @@ import { writeFile } from 'node:fs/promises';
 import {
     arca,
     comments,
+    demonicattack,
     eslint,
     esx,
     imrt,
@@ -48,6 +49,7 @@ const configs = await combine(
     esx(),
     eslint(),
     imrt(),
+    demonicattack(),
     typescript(),
     prettier(),
     arca(),

@@ -26,12 +26,12 @@
         "watch": "tsup --watch"
     },
     "dependencies": {
-        "@demonicattack/typescript-plugin": "workspace:*"
+        "@demonicattack/typescript-plugin": "workspace:*",
+        "@demonicattack/shared": "workspace:*"
     },
     "devDependencies": {
         "@demonicattack/eslint": "workspace:*",
         "@demonicattack/prettier": "workspace:*",
-        "@demonicattack/shared": "workspace:*",
         "@demonicattack/ts": "workspace:*",
         "prettier": "^3.3.3",
         "rimraf": "^6.0.1",

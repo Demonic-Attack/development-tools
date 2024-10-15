@@ -5,6 +5,7 @@ import { isPackageExists } from 'local-pkg';
 import {
     arca,
     comments,
+    demonicattack,
     disables,
     eslint,
     esx,
@@ -155,6 +156,9 @@ const config = async (
         javascript({
             ...jsOptions,
             overrides: getOverrides(options, 'js'),
+        }),
+        demonicattack({
+            // overrides: getOverrides(options, ''),
         }),
     );
 

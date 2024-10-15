@@ -6,6 +6,9 @@ export default config({
         configurations: {
             onEslintAirBnbBaseConfigRules: true,
         },
+        overrides: {
+            'no-useless-computed-key': 'off',
+        },
     },
     ts: {
         tsconfigPath: 'tsconfig.json',
