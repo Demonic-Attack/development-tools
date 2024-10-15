@@ -7,7 +7,7 @@ const demonicattack = async (options: IOptionsOverrides = {}): Promise<TFlatConf
 
     return [
         {
-            name: '@demonicattack/rules',
+            name: 'demonicattack/rules',
             plugins: {
                 ['@demonicattack/typescript-plugin']: eslintPlugin,
             },

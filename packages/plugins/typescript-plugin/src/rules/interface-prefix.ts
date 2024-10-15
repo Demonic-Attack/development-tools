@@ -14,6 +14,7 @@ export default createRule<[], CamelCase<typeof RULE_NAME>>({
         docs: {
             description: 'Require that interface names be prefixed with `I`',
         },
+        fixable: 'code',
         messages: {
             interfacePrefix: 'Interface names must be prefixed with `I`',
         },
@@ -29,9 +30,8 @@ export default createRule<[], CamelCase<typeof RULE_NAME>>({
     },
     name: RULE_NAME,
     create(context, options) {
-        console.log('🚀 ~ create ~ options:', options);
         const option = applyDefault(defaultOptions, options)[0];
-        console.log('🚀 ~ create ~ option:', option);
+        // console.log('🚀 ~ create ~ option:', option); // never
         const never = option !== 'always';
         return {
             TSInterfaceDeclaration(interfaceNode) {
@@ -40,6 +40,9 @@ export default createRule<[], CamelCase<typeof RULE_NAME>>({
                         context.report({
                             messageId: 'interfacePrefix',
                             node: interfaceNode.id,
+                            fix(fixer) {
+                                return fixer.replaceText(interfaceNode.id, `I${interfaceNode.id.name}`);
+                            },
                         });
                     }
                 } else if (isPrefixedWithI(interfaceNode.id.name)) {

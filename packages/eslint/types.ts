@@ -75,6 +75,10 @@ interface IOptionsRegExp {
     level?: 'error' | 'warn';
 }
 
+export interface IOptionsDemonicAttack {
+    r: boolean;
+}
+
 interface IOptionsUnicorn {
     onEslintBaseUnicornConfigRules?: TFlatConfigItem['rules'] | boolean;
     onUnicornRecommendedConfigRules?: TFlatConfigItem['rules'] | boolean;
@@ -95,9 +99,9 @@ type TOptionsTypescript =
     | (IOptionsOverrides & IOptionsTypeScriptWithTypes);
 
 interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectType {
+    demonicattack?: IOptionsOverrides;
     gitignore?: FlatGitignoreOptions | boolean;
     js?: IOptionsJs | IOptionsOverrides;
-    demonicattack?: IOptionsOverrides;
     /**
      * By default, the plugins is enabled
      */
@@ -144,6 +148,7 @@ interface IOptionsConfig extends IOptionsComponentExtensions, IOptionsProjectTyp
         node?: TFlatConfigItem['rules'];
         arca?: TFlatConfigItem['rules'];
         comments?: TFlatConfigItem['rules'];
+        demonicattack?: TFlatConfigItem['rules'];
         esx?: TFlatConfigItem['rules'];
         import?: TFlatConfigItem['rules'];
         js?: TFlatConfigItem['rules'];

@@ -158,7 +158,7 @@ const config = async (
             overrides: getOverrides(options, 'js'),
         }),
         demonicattack({
-            // overrides: getOverrides(options, ''),
+            overrides: getOverrides(options, 'demonicattack'),
         }),
     );
 

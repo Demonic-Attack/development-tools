@@ -1,5 +1,6 @@
-import interfacePrefix from './rules/interface-prefix';
 import { name, version } from '../package.json';
+
+import interfacePrefix from './rules/interface-prefix';
 
 export default {
     meta: {
