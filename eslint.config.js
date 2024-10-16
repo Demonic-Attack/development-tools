@@ -53,6 +53,7 @@ export default config(
     },
     {
         rules: {
+            'no-void': 'off',
             'sonarjs/deprecation': 'off',
             'sonarjs/todo-tag': 'off',
         },

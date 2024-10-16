@@ -21,12 +21,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
+          key: v1-deps-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Install dependencies
           command: pnpm install
       - save_cache:
-          key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
+          key: v1-deps-{{ checksum "pnpm-lock.yaml" }}
           paths:
             - node_modules
       - run:
@@ -41,12 +41,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
+          key: v1-deps-{{ checksum "pnpm-lock.yaml" }}
       - run:
           name: Install dependencies
           command: pnpm install
       - save_cache:
-          key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
+          key: v1-deps-{{ checksum "pnpm-lock.yaml" }}
           paths:
             - node_modules
       - run:
