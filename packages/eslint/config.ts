@@ -40,12 +40,6 @@ const defaultPluginRenaming = {
     tailwindcss: 'tw',
 };
 
-/**
- * The name of the language used for linting. This is used to determine the
- * parser and other language-specific settings.
- * @since 9.7.0
- */
-// language?: string;
 const flatConfigProperties = [
     'name',
     'languageOptions',
@@ -78,9 +72,7 @@ const getOverrides = <K extends TOverridesKey>(options: IOptionsConfig, key: K):
 
 const config = async (
     options: IOptionsConfig & Omit<TFlatConfigItem, 'files'> = {},
-    ...userConfigs: Awaitable<
-        FlatConfigComposer<Linter.Config, TConfigNames> | Linter.Config[] | TFlatConfigItem | TFlatConfigItem[]
-    >[]
+    ...userConfigs: Awaitable<FlatConfigComposer<any, any> | Linter.Config[] | TFlatConfigItem | TFlatConfigItem[]>[]
 ): Promise<FlatConfigComposer<TFlatConfigItem, TConfigNames>> => {
     const {
         autoRenamePlugins = true,
@@ -89,6 +81,7 @@ const config = async (
         /**
          * By default, the plugins is enabled
          */
+        // eslint-disable-next-line perfectionist/sort-objects
         node: enableNode = true,
         comments: enableComments = true,
         esx: enableEsx = true,
@@ -104,6 +97,7 @@ const config = async (
          * By default, the plugins is enabled if the current package is in your project
          * @example typescript, react, tailwindcss, etc
          */
+        // eslint-disable-next-line perfectionist/sort-objects
         next: enableNext = isPackageExists('next'),
         prettier: enablePrettier = isPackageExists('prettier'),
         react: enableReact = isPackageExists('react'),
@@ -113,6 +107,7 @@ const config = async (
         /**
          * By default, the plugins is disabled
          */
+        // eslint-disable-next-line perfectionist/sort-objects
         arca: enableArca = false,
         eslint: enableEslint = false,
         // json: enableJson = false,

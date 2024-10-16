@@ -1,6 +1,7 @@
 import { name, version } from './package.json';
+
 import { padKeysLeft } from '@demonicattack/shared';
-import typescriptPlugin from /** Empty */ '@demonicattack/typescript-plugin';
+import typescriptPlugin from '@demonicattack/typescript-plugin';
 
 type Severity = 'error' | 'off' | 'warn';
 type RuleDeclaration = [Severity, Record<string, unknown>?] | Severity;
@@ -25,7 +26,7 @@ const flatConfigPlugins = {
 const createFlatConfig = <T extends RulePreset>(rules: T) =>
     ({
         plugins: flatConfigPlugins,
-        // eslint-disable-next-line ts/no-unsafe-assignment, ts/no-unsafe-call
+
         rules: padKeysLeft(rules, '@demonicattack/typescript-plugin/'),
         settings: {},
     }) as const;
@@ -39,7 +40,7 @@ export default {
         ['recommended']: createFlatConfig(recommendedPreset),
     },
     rules: {
-      ...typescriptPlugin.rules,
-      // ...padKeysLeft(typescriptPlugin.rules, 'ts/'),
-    }
+        ...typescriptPlugin.rules,
+        // ...padKeysLeft(typescriptPlugin.rules, 'ts/'),
+    },
 } as const;

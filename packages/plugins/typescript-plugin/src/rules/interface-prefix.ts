@@ -7,7 +7,6 @@ const defaultOptions = ['never'];
 
 const isPrefixedWithI = (name: string) => typeof name === 'string' && /^I[A-Z]/u.test(name);
 
-// eslint-disable-next-line arca/no-default-export
 export default createRule<[], CamelCase<typeof RULE_NAME>>({
     meta: {
         type: 'suggestion',
@@ -21,6 +20,7 @@ export default createRule<[], CamelCase<typeof RULE_NAME>>({
         schema: [
             {
                 type: 'string',
+                default: 'always',
                 enum: [
                     'always',
                     'never',

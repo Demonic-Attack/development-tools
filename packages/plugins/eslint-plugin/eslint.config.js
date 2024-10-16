@@ -1,4 +1,4 @@
-import { config } from '@demonicattack/eslint';
+import { config } from '../../eslint/dist/index.js';
 // import Config from './dist/index.js';
 
 export default config({

@@ -1,0 +1,5 @@
+{
+    "exclude": ["node_modules"],
+    "extends": "@demonicattack/ts/default.json",
+    "include": ["**/*.ts"]
+}

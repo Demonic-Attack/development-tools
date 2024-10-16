@@ -80,7 +80,10 @@ const perfectionist = async (options: IOptionsOverrides = {}): Promise<TFlatConf
                 ],
                 'perfectionist/sort-objects': [
                     'error',
-                    p11t as any,
+                    {
+                        ...p11t,
+                        partitionByComment: 'Part:**',
+                    } as any,
                 ],
                 'perfectionist/sort-sets': 'error',
                 'perfectionist/sort-svelte-attributes': 'off',

@@ -1,5 +1,4 @@
-import { config } from '@demonicattack/eslint';
-import Config from './dist/index.js';
+import { config } from '../../eslint/dist/index.js';
 
 export default config({
     js: {
@@ -12,9 +11,6 @@ export default config({
     },
     ts: {
         tsconfigPath: 'tsconfig.json',
-        overridesTypeAware: {
-            'ts/no-unsafe-argument': 'off',
-        },
     },
     import: {
         overrides: {
@@ -22,6 +18,7 @@ export default config({
             'import/no-default-export': 'off',
         },
     },
+    eslint: true,
     sonarjs: true,
     arca: true,
     prettier: {

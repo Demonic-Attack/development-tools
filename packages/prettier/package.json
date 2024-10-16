@@ -28,7 +28,6 @@
         "prettier-plugin-tailwindcss": "^0.6.8"
     },
     "devDependencies": {
-        "@demonicattack/ts": "workspace:*",
         "eslint": "^9.12.0",
         "rimraf": "^6.0.1",
         "tsup": "^8.3.0",

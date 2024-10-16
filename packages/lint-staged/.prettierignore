@@ -4,7 +4,6 @@ public
 build
 logs
 coverage
-.eslint-config-inspector
 .next
 .turbo
 .github
@@ -21,4 +20,3 @@ coverage
 *.html
 *.md
 .*ignore
-

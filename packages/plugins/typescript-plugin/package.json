@@ -31,11 +31,11 @@
         "ts-deepmerge": "^7.0.1"
     },
     "devDependencies": {
-        "@demonicattack/eslint": "workspace:*",
         "@demonicattack/prettier": "workspace:*",
         "@demonicattack/ts": "workspace:*",
         "@types/eslint": "^9.6.1",
         "@types/node": "^22.7.5",
+        "importx": "^0.5.0",
         "prettier": "^3.3.3",
         "rimraf": "^6.0.1",
         "string-ts": "^2.2.0",

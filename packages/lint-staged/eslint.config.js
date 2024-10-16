@@ -5,25 +5,20 @@ export default config({
         configurations: {
             onEslintAirBnbBaseConfigRules: true,
         },
+    },
+    import: {
+        react: false,
+        typescript: true,
         overrides: {
-            'prefer-named-capture-group': 'off',
+            'import/prefer-default-export': 'off',
         },
     },
     ts: {
         tsconfigPath: 'tsconfig.json',
         overridesTypeAware: {
-            'ts/no-unsafe-argument': 'off',
-        },
-    },
-    import: {
-        overrides: {
-            'import/prefer-default-export': 'off',
-            'import/no-default-export': 'off',
-        },
-    },
-    sonarjs: {
-        overrides: {
-            'sonarjs/new-cap': 'off',
+            'ts/no-unsafe-assignment': 'off',
+            'ts/no-unsafe-call': 'off',
+            'ts/no-unsafe-member-access': 'off',
         },
     },
     arca: true,

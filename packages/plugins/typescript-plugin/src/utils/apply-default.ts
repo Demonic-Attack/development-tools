@@ -9,7 +9,6 @@ const applyDefault = <T>(defaultOptions: readonly T[], userOptions?: readonly T[
     return defaultOptions.map((defaultOption, index) => {
         const userOption = userOptions[index];
 
-        // eslint-disable-next-line no-undefined
         if (userOption !== undefined) {
             if (isObjectNotArray(userOption) && isObjectNotArray(defaultOption))
                 return merge(defaultOption, userOption) as T;
