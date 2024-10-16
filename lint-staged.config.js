@@ -4,7 +4,8 @@
  * @type {import('@demonicattack/lint-staged').TLintStagedConfig}
  */
 export default {
-    '**/*': [
+    '*/**': [
+        // 'pnpm typecheck',
         'pnpm lint:fix',
         'pnpm format:fix',
     ],
