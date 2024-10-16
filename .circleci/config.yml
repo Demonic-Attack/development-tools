@@ -22,8 +22,9 @@ jobs:
       - checkout
       - restore_cache:
           key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
-      - node/install-packages:
-          pkg-manager: pnpm
+      - run:
+          name: Install dependencies
+          command: pnpm install
       - save_cache:
           key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
           paths:
@@ -41,8 +42,9 @@ jobs:
       - checkout
       - restore_cache:
           key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
-      - node/install-packages:
-          pkg-manager: pnpm
+      - run:
+          name: Install dependencies
+          command: pnpm install
       - save_cache:
           key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
           paths:
