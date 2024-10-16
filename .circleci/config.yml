@@ -2,11 +2,12 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
 workflows:
-  test:
+  lint-and-format:
     jobs:
-      - test
+      - lint
+      - format
 jobs:
-  test:
+  lint:
     docker:
       - image: cimg/node:lts
     steps:
@@ -15,12 +16,20 @@ jobs:
           pkg-manager: pnpm
           cache-key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
       - run:
-          name: Build
-          command: pnpm build
+          name: Lint
+          command: pnpm lint:fix
           environment:
             TURBO_UI: "false"
+  format:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: pnpm
+          cache-key: "v1-deps-{{ checksum 'pnpm-lock.yaml' }}"
       - run:
-          name: Test
-          command: pnpm test
+          name: Format
+          command: pnpm format:fix
           environment:
             TURBO_UI: "false"
