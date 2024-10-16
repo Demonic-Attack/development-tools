@@ -1,6 +1,11 @@
-import { config } from '@demonicattack/lint-staged';
-
+// import { config } from '@demonicattack/lint-staged';
+// **/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,json,prisma,md}\
 /**
  * @type {import('@demonicattack/lint-staged').TLintStagedConfig}
  */
-export default config;
+export default {
+    '**/*': [
+        'pnpm lint:fix',
+        'pnpm format:fix',
+    ],
+};

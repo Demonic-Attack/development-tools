@@ -17,7 +17,8 @@
         "build": "pnpm build:clean && tsup",
         "build:clean": "rimraf dist",
         "clean": "rimraf node_modules",
-        "format": "prettier -w \"**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,json,prisma,md}\"",
+        "format": "prettier --check \"**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,json,prisma,md}\"",
+        "format:fix": "prettier --write \"**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx,json,prisma,md}\"",
         "lint": "eslint",
         "lint:fix": "eslint --fix",
         "typecheck": "tsc --noEmit"

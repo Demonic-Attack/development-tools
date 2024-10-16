@@ -19,6 +19,10 @@
             "outputs": ["node_modules/.cache/.prettiercache"],
             "outputLogs": "new-only"
         },
+        "build:inspector": {
+            "dependsOn": ["^build:inspector"],
+            "cache": false
+        },
         "clean": {
             "cache": false
         },

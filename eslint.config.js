@@ -47,8 +47,8 @@ export default config(
     },
     {
         ignores: [
-            'typegen.d.ts',
             '.eslint-config-inspector',
+            'typegen.d.ts',
         ],
     },
     {
