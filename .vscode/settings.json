@@ -3,5 +3,8 @@
     {
       "mode": "auto"
     }
+  ],
+  "circleci.persistedProjectSelection": [
+    "circleci/CozfersUWynis1VcR23Fka/3jocbMdfZTa2hfJ21AkqDQ"
   ]
 }
